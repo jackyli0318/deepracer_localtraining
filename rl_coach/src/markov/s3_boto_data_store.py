@@ -45,8 +45,9 @@ class S3BotoDataStore(DataStore):
         return os.path.normpath(self.key_prefix + "/" + key)
 
     def _get_client(self):
+        s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
         session = boto3.session.Session()
-        return session.client('s3', region_name=self.params.aws_region)
+        return session.client('s3', region_name=self.params.aws_region, endpoint_url=s3_endpoint_url)
 
     def deploy(self) -> bool:
         return True
