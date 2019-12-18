@@ -18,4 +18,8 @@
   </node>
 
   <node pkg="deepracer_simulation" type="car_node.py" name="car_reset_node" output="screen"></node>
+
+  <node pkg="deepracer_simulation" type="kinesis_video_camera_node.py" name="kinesis_video_camera_node" output="screen"></node>
+   
+  <node pkg="deepracer_simulation" type="visualization_node.py" name="visualization_node" output="screen"></node>
 </launch>

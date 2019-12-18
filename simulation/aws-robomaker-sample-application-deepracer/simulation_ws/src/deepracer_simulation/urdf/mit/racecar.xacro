@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <robot name="racecar" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find deepracer_simulation)/urdf/macros.xacro" />
+  <xacro:include filename="$(find deepracer_simulation)/urdf/mit/macros.xacro" />
+
+  <xacro:arg name="include_second_camera" default="false" />
+  <xacro:arg name="include_lidar_sensor" default="false" />
 
   <!-- Add chassis and it's inertia link -->
 
@@ -239,7 +242,7 @@
 
   <!-- Add the remaining xacros -->
 
-  <xacro:include filename="$(find deepracer_simulation)/urdf/racecar.gazebo" />
-  <xacro:include filename="$(find deepracer_simulation)/urdf/materials.xacro" />
+  <xacro:include filename="$(find deepracer_simulation)/urdf/mit/racecar.gazebo" />
+  <xacro:include filename="$(find deepracer_simulation)/urdf/mit/materials.xacro" />
 
 </robot>

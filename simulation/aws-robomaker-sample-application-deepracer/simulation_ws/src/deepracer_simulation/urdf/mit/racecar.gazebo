@@ -55,8 +55,6 @@
     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     <legacyModeNS>true</legacyModeNS>
   </plugin>
-  <plugin name="racecar_plugin" filename="libracecar_plugin.so">
-  </plugin>
 </gazebo>
 
 

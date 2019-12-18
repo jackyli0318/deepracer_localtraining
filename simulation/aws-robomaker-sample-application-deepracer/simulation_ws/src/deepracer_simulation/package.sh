@@ -81,6 +81,9 @@ _colcon_package_sh_source_script() {
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/cmake_prefix_path.sh"
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/pkg_config.sh"
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/ros_package_path.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/python2path.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/pkg_config_path.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/deepracer_simulation/hook/pkg_config_path_multiarch.sh"
 
 unset _colcon_package_sh_source_script
 unset COLCON_CURRENT_PREFIX
