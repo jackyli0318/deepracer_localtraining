@@ -39,7 +39,7 @@ class ObstaclesCtrl(AgentCtrlInterface):
             self.bot_car_urdf = rospy.get_param('robot_description_bot')
         else:
             rospack = rospkg.RosPack()
-            deepracer_path = rospack.get_path("deepracer_simulation_environment")
+            deepracer_path = rospack.get_path("deepracer_simulation")
             obstacle_sdf_path = os.path.join(deepracer_path, "models", "box_obstacle", "model.sdf")
             with open(obstacle_sdf_path, "r") as fp:
                 self.obstacle_sdf = fp.read()
