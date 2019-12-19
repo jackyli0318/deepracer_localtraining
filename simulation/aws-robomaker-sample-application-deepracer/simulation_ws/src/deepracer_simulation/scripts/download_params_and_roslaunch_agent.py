@@ -31,7 +31,8 @@ def main():
     s3_prefix = sys.argv[3]
     s3_yaml_name = sys.argv[4]
     launch_name = sys.argv[5]
-    yaml_key = os.path.normpath(os.path.join(s3_prefix, s3_yaml_name))
+    # yaml_key = os.path.normpath(os.path.join(s3_prefix, s3_yaml_name))
+    yaml_key = os.path.normpath('custom_files/training_params.yaml')
     json_key = os.environ.get('MODEL_METADATA_FILE_S3_KEY', os.path.join(s3_prefix, 'model/model_metadata.json'))
     json_key = json_key.replace('s3://{}/'.format(s3_bucket), '')
     local_yaml_path = os.path.abspath(os.path.join(os.getcwd(), s3_yaml_name))
