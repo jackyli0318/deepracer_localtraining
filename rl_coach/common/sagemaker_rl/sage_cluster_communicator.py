@@ -19,8 +19,9 @@ class SageClusterCommunicator():
         self.done_file_key = "CONFIG_DONE"
 
     def get_client(self):
+        s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
         session = boto3.session.Session()
-        return session.client('s3', region_name=self.aws_region)
+        return session.client('s3', region_name=self.aws_region, endpoint_url=s3_endpoint_url)
 
     def _get_s3_key(self, key):
         return os.path.normpath(self.s3_prefix + "/config/" + key)

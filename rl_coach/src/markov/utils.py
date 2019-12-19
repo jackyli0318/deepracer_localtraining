@@ -199,8 +199,9 @@ def do_model_selection(s3_bucket, s3_prefix, region):
        s3_prefix - Prefix for the training job for which to select the best model for
        region - Name of the aws region where the job ran
     '''
+    s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
     session = boto3.Session()
-    s3_client = session.client('s3', region_name=region)
+    s3_client = session.client('s3', region_name=region, endpoint_url=s3_endpoint_url)
     # Download training metrics
     training_metrics_json = os.path.join(os.getcwd(), 'training_metrics.json')
     try:
@@ -305,8 +306,9 @@ def has_current_ckpnt_name(s3_bucket, s3_prefix, region):
        region - Name of the aws region where the job ran
     '''
     try:
+        s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
         session = boto3.Session()
-        s3_client = session.client('s3', region_name=region)
+        s3_client = session.client('s3', region_name=region, endpoint_url=s3_endpoint_url)
         response = s3_client.list_objects_v2(Bucket=s3_bucket,
                                              Prefix=os.path.join(s3_prefix, "model"))
         if 'Contents' not in response:
@@ -332,8 +334,9 @@ def make_compatible(s3_bucket, s3_prefix, region, ready_file):
        region - Name of the aws region where the job ran
     '''
     try:
+        s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
         session = boto3.Session()
-        s3_client = session.client('s3', region_name=region)
+        s3_client = session.client('s3', region_name=region, endpoint_url=s3_endpoint_url)
 
         old_checkpoint = os.path.join(os.getcwd(), 'checkpoint')
         s3_client.download_file(Bucket=s3_bucket,

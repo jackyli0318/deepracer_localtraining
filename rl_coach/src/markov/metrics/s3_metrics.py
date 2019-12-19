@@ -27,8 +27,9 @@ def write_metrics_to_s3(bucket, key, region, metrics):
        region - String with aws region
        metrics - Dictionary with metrics to write to s3
     '''
+    s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
     session = boto3.session.Session()
-    s3_client = session.client('s3', region_name=region)
+    s3_client = session.client('s3', region_name=region, endpoint_url=s3_endpoint_url)
     s3_client.put_object(Bucket=bucket, Key=key,
                          Body=bytes(json.dumps({'metrics': metrics}),
                                     encoding='utf-8'))
