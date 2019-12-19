@@ -43,6 +43,9 @@ install(PROGRAMS
     scripts/run_evaluation_rl_agent.sh
     scripts/car_node.py
     scripts/rotation.py
+    scripts/download_params_and_roslaunch_agent.py
+    scripts/kinesis_video_camera_node.py
+    scripts/visualization_node.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

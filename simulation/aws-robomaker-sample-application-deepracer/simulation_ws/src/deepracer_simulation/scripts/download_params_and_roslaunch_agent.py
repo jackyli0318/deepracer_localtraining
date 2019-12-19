@@ -39,7 +39,8 @@ def main():
 
     # create boto3 session/client and download yaml/json file
     session = boto3.session.Session()
-    s3_client = session.client('s3', region_name=s3_region)
+    s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
+    s3_client = session.client('s3', region_name=s3_region, endpoint_url=s3_endpoint_url)
     s3_client.download_file(Bucket=s3_bucket, Key=yaml_key, Filename=local_yaml_path)
     s3_client.download_file(Bucket=s3_bucket, Key=json_key, Filename=local_model_metadata_path)
 

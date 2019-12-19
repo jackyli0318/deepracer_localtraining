@@ -62,3 +62,15 @@ def reward_function(params):
         reward = 1e-3  # likely crashed/ close to off track
 
     return float(reward)
+
+
+"""
+Default Main Camera
+"""
+DEFAULT_MAIN_CAMERA = "follow_car_camera"
+
+
+"""
+Default Sub Camera
+"""
+DEFAULT_SUB_CAMERA = "top_camera"

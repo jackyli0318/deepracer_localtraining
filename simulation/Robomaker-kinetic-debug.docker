@@ -32,5 +32,8 @@ RUN pip3 install -U setuptools nose>=1.0 src/sagemaker_rl_agent/
 #RUN ["/bin/bash", "-c", "source /opt/ros/kinetic/setup.bash; colcon build"]
 ADD run.sh run.sh
 
+# Add sagemaker_rl_agent into python path
+ENV PYTHONPATH "${PYTHONPATH}:/app/robomaker-deepracer/simulation_ws/src/sagemaker_rl_agent"
+
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["./run.sh build distributed_training.launch"]
