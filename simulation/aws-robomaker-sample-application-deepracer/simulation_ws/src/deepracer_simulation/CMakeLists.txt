@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  sensor_msgs
   message_generation
 )
 
@@ -26,9 +27,14 @@ add_service_files(
   ResetCarSrv.srv
 )
 
+add_message_files(DIRECTORY msg
+                  FILES
+                  AgentRewardData.msg)
+
 generate_messages(
   DEPENDENCIES
   std_msgs
+  sensor_msgs
 )
 
 catkin_package()
