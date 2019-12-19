@@ -10,7 +10,9 @@
 
     <include file="$(find deepracer_simulation)/launch/racetrack_with_racecar.launch">
         <arg name="world_name" value="$(env WORLD_NAME)" />
+        <!--
         <arg name="kinesis_video_stream_name" value="$(env KINESIS_VIDEO_STREAM_NAME)" />
+        -->
     </include>
 
     <node name="agent" pkg="deepracer_simulation" type="run_local_rl_agent.sh" output="screen" required="true"/>

@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="world_name" />
+  <!--
   <arg name="kinesis_video_stream_name" />
   <arg name="kinesis_video_stream_region" default="us-east-1" />
+  -->
   <arg name="gui" default="true" />
   <arg name="car_color" default="Black" />
   <arg name="simapp_version"/>
@@ -69,11 +71,13 @@
     <arg name="image_transport" value="raw" />
   </include>
 
+  <!--
   <include file="$(find deepracer_simulation)/launch/kinesis_video_streamer.launch">
     <arg name="node_config_file" value="$(find deepracer_simulation)/config/deepracer_node_config.yaml" />
     <arg name="stream_config_file" value="$(find deepracer_simulation)/config/deepracer_stream_config.yaml" />
     <arg name="kinesis_video_stream_name" value="$(arg kinesis_video_stream_name)" />
     <arg name="kinesis_video_stream_region" value="$(arg kinesis_video_stream_region)" />
   </include>
+-->
 
 </launch>
