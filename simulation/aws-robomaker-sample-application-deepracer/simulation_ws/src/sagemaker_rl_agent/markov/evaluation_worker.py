@@ -54,8 +54,8 @@ def evaluation_worker(graph_manager, data_store, number_of_trials, task_paramete
         graph_manager.evaluate(EnvironmentSteps(1))
 
     # Close the down the job
-    utils.cancel_simulation_job(os.environ.get('AWS_ROBOMAKER_SIMULATION_JOB_ARN'),
-                                rospy.get_param('AWS_REGION'))
+    # utils.cancel_simulation_job(os.environ.get('AWS_ROBOMAKER_SIMULATION_JOB_ARN'),
+    #                             os.environ.get('AWS_REGION'))
 
 def main():
     parser = argparse.ArgumentParser()
@@ -67,19 +67,19 @@ def main():
     parser.add_argument('--s3_bucket',
                         help='(string) S3 bucket',
                         type=str,
-                        default=rospy.get_param("MODEL_S3_BUCKET", "gsaur-test"))
+                        default=os.environ.get("MODEL_S3_BUCKET", "gsaur-test"))
     parser.add_argument('--s3_prefix',
                         help='(string) S3 prefix',
                         type=str,
-                        default=rospy.get_param("MODEL_S3_PREFIX", "sagemaker"))
+                        default=os.environ.get("MODEL_S3_PREFIX", "sagemaker"))
     parser.add_argument('--aws_region',
                         help='(string) AWS region',
                         type=str,
-                        default=rospy.get_param("AWS_REGION", "us-east-1"))
+                        default=os.environ.get("AWS_REGION", "us-east-1"))
     parser.add_argument('--number_of_trials',
                         help='(integer) Number of trials',
                         type=int,
-                        default=int(rospy.get_param("NUMBER_OF_TRIALS", 10)))
+                        default=int(os.environ.get("NUMBER_OF_TRIALS", 10)))
     parser.add_argument('-c', '--local_model_directory',
                         help='(string) Path to a folder containing a checkpoint \
                              to restore the model from.',
@@ -122,19 +122,19 @@ def main():
                     'car_ctrl_cnfig': {ConfigParams.LINK_NAME_LIST.value: LINK_NAMES,
                                        ConfigParams.VELOCITY_LIST.value : VELOCITY_TOPICS,
                                        ConfigParams.STEERING_LIST.value : STEERING_TOPICS,
-                                       ConfigParams.CHANGE_START.value : utils.str2bool(rospy.get_param('CHANGE_START_POSITION', False)),
-                                       ConfigParams.ALT_DIR.value : utils.str2bool(rospy.get_param('ALTERNATE_DRIVING_DIRECTION', False)),
+                                       ConfigParams.CHANGE_START.value : utils.str2bool(os.environ.get('CHANGE_START_POSITION', False)),
+                                       ConfigParams.ALT_DIR.value : utils.str2bool(os.environ.get('ALTERNATE_DRIVING_DIRECTION', False)),
                                        ConfigParams.ACTION_SPACE_PATH.value : 'custom_files/model_metadata.json',
                                        ConfigParams.REWARD.value : reward_function,
                                        ConfigParams.AGENT_NAME.value : 'racecar',
                                        ConfigParams.VERSION.value : version}}
 
     #! TODO each agent should have own s3 bucket
-    metrics_s3_config = {MetricsS3Keys.METRICS_BUCKET.value: rospy.get_param('METRICS_S3_BUCKET'),
-                         MetricsS3Keys.METRICS_KEY.value:  rospy.get_param('METRICS_S3_OBJECT_KEY'),
-                         MetricsS3Keys.REGION.value: rospy.get_param('AWS_REGION'),
-                         MetricsS3Keys.STEP_BUCKET.value: rospy.get_param('MODEL_S3_BUCKET'),
-                         MetricsS3Keys.STEP_KEY.value: os.path.join(rospy.get_param('MODEL_S3_PREFIX'),
+    metrics_s3_config = {MetricsS3Keys.METRICS_BUCKET.value: os.environ.get('MODEL_S3_BUCKET'),
+                         MetricsS3Keys.METRICS_KEY.value:  os.environ.get('METRICS_S3_OBJECT_KEY'),
+                         MetricsS3Keys.REGION.value: os.environ.get('AWS_REGION'),
+                         MetricsS3Keys.STEP_BUCKET.value: os.environ.get('MODEL_S3_BUCKET'),
+                         MetricsS3Keys.STEP_KEY.value: os.path.join(os.environ.get('MODEL_S3_PREFIX'),
                                                                     EVALUATION_SIMTRACE_DATA_S3_OBJECT_KEY)}
 
     agent_list = list()
