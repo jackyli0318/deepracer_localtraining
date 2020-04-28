@@ -1,6 +1,8 @@
 # DeepRacer
 A repo for running deepracer locally. The rl_coach code comes from https://github.com/awslabs/amazon-sagemaker-examples/tree/master/reinforcement_learning/rl_deepracer_robomaker_coach_gazebo
 
+**About new version for race in 2020, see: [richardfan1126’s wiki](https://github.com/richardfan1126/deepracer/wiki/How-to-start-the-training)**
+
 **The DeepRacer console underlying bundle can update with no warning so this won't always be up to date with the console.**
 
 **If you can't get this working, please open an issue. It helps with me being able to see issues I might need to fix and it helps everyone else see fixes from issues they might be having. There is a [FAQ in the wiki](https://github.com/crr0004/deepracer/wiki/FAQ) for common issues.**
